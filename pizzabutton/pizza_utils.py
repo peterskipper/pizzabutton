@@ -85,8 +85,9 @@ def order_pie():
     pass
 
 
-#class PizzaDeliveryHandler(IPythonHandler):
+class PizzaDeliveryHandler(IPythonHandler):
 
-#    def get(self):
-#        # order_pie()
-#        self.finish("Pizza on the way!")
+    def get(self):
+        # order_pie()
+        with open("PIZZA_CODE_RUNNING.txt", 'w') as f:
+            f.write("Get the door. It's Dominos.\n")
