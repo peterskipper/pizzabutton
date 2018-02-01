@@ -1,15 +1,14 @@
 define([
     'base/js/namespace',
-    'jquery'
-], function(Jupyter, $) {
-    
-    function post_pizza_req() {
-	console.log("Sending post req for pizza")
-	var url = window.location.href
-	console.log("Base url: ", url)
-	var pizza_url = url + "/pizza_me"
-	console.log("Pizza url: ", pizza_url)
-	$.get(pizza_url)
+    'jquery',
+    'base/js/utils'
+], function(Jupyter, $, utils) {
+
+    function get_pizza_req() {
+    console.log("Sending get req for pizza")
+    var pizzaUrl = utils.url_path_join(utils.get_body_data('baseUrl'), 'pizza_me')
+    console.log("Pizza url: ", pizzaUrl)
+    $.get(pizzaUrl)
     }
 
     function place_button() {
@@ -20,7 +19,7 @@ define([
 	Jupyter.toolbar.add_buttons_group([{
 	    label: 'Pizza Button',
 	    icon: 'fa-car',
-	    callback: post_pizza_req
+	    callback: get_pizza_req
 	}])
     }
 
