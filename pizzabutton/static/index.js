@@ -9,7 +9,7 @@ define([
 	console.log("Base url: ", url)
 	var pizza_url = url + "/pizza_me"
 	console.log("Pizza url: ", pizza_url)
-	$.post(pizza_url)
+	$.get(pizza_url)
     }
 
     function place_button() {

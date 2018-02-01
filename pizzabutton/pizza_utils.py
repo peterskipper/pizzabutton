@@ -85,9 +85,8 @@ def order_pie():
     pass
 
 
-class PizzaDeliveryHandler(IPythonHandler):
+#class PizzaDeliveryHandler(IPythonHandler):
 
-    def post(self):
-        print("I was called")
-        # order_pie()
-        print("Pizza on the way!")
+#    def get(self):
+#        # order_pie()
+#        self.finish("Pizza on the way!")
