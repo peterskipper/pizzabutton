@@ -1,5 +1,4 @@
 from notebook.utils import url_path_join
-from notebook.base.handlers import IPythonHandler
 
 from .pizza_utils import PizzaDeliveryHandler
 
@@ -17,13 +16,6 @@ def _jupyter_nbextension_paths():
         src="static",
         dest="pizzabutton",
         require="pizzabutton/index")]
-
-
-#class PizzaDeliveryHandler(IPythonHandler):
-#
-#    def get(self):
-#        # order_pie()
-#        self.finish("Pizza on the way!")
 
 
 def load_jupyter_server_extension(nb_server_app):
