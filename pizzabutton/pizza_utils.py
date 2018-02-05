@@ -15,7 +15,8 @@ REQUIRED_ENV_VARS = [
     "CC_NUMBER",
     "EXPIRATION",
     "CVV",
-    "BILLING_ZIP"
+    "BILLING_ZIP",
+    "MY_ORDER_ITEMS"
 ]
 
 
@@ -81,13 +82,38 @@ def build_payment():
                                  zip=e['BILLING_ZIP'])
 
 
-def order_pie():
-    pass
+def build_order():
+    cust = build_customer()
+    addy = build_address()
+    store = addy.closest_store()
+    return pizzapi.Order(store=store,
+                         customer=cust,
+                         address=addy)
+
+
+def _parse_items():
+    """Finds Bash var MY_ORDER_ITEMS, a comma separated list of item codes
+    compatible with the pizzapi package. See the README for pizzapi for more
+    details on how to search for items"""
+    for env_var in ['MY_ORDER_ITEMS']:
+        _check_defined(env_var, "Required Order Env Var {} is not defined!")
+    return os.environ['MY_ORDER_ITEMS'].split(",")
+
+
+def order_pie(order):
+    card = build_payment()
+    order.credit_card = card
+    items = _parse_items()
+    for item in items:
+        order.add_item(item)
+    order.pay_with(card)
+    # order.place(card)
 
 
 class PizzaDeliveryHandler(IPythonHandler):
 
     def get(self):
-        # order_pie()
-        with open("PIZZA_CODE_RUNNING.txt", 'w') as f:
-            f.write("Get the door. It's Dominos.\n")
+        order = build_order()
+        order_pie(order)
+        # with open("PIZZA_CODE_RUNNING.txt", 'w') as f:
+        #    f.write("Get the door. It's Dominos.\n")
