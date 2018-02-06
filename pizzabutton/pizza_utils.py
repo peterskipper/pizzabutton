@@ -20,6 +20,14 @@ REQUIRED_ENV_VARS = [
 ]
 
 
+class MissingPizzaVarError(Exception):
+
+    def __init__(self, var, msg_tmpl):
+        self.var = var
+        self.err_msg = msg_tmpl.format(var)
+        self.err_msg += "\nSee pizzabutton README for more details."
+
+
 def _find_missing_env():
     missing = []
     for env_var in REQUIRED_ENV_VARS:
@@ -42,14 +50,9 @@ def check_env():
     _display_missing(missing)
 
 
-def _check_exit_code(retcode, err_msg):
-    if retcode != 0:
-        raise AssertionError(err_msg)
-
-
 def _check_defined(env_var, err_msg):
     if env_var not in os.environ:
-        raise AssertionError(err_msg.format(env_var))
+        raise MissingPizzaVarError(var=env_var, msg_tmpl=err_msg)
 
 
 def build_customer():
@@ -100,20 +103,34 @@ def _parse_items():
     return os.environ['MY_ORDER_ITEMS'].split(",")
 
 
-def order_pie(order):
+def place_order(order, items):
     card = build_payment()
     order.credit_card = card
-    items = _parse_items()
     for item in items:
         order.add_item(item)
     order.pay_with(card)
     # order.place(card)
 
 
+def _build_msg_json(**kwargs):
+    return dict(**kwargs)
+
+
 class PizzaDeliveryHandler(IPythonHandler):
 
     def get(self):
-        order = build_order()
-        order_pie(order)
+        try:
+            order = build_order()
+            items = _parse_items()
+            place_order(order, items)
+            msg_json = _build_msg_json(
+                title="Delivery Successful!",
+                body="Your order of {}\nis on the way...".format(items))
+        except MissingPizzaVarError as e:
+            msg_json = _build_msg_json(title="Pizza Variables Missing",
+                                       body=e.err_msg)
+        self.write(msg_json)
+        self.flush()
+
         # with open("PIZZA_CODE_RUNNING.txt", 'w') as f:
         #    f.write("Get the door. It's Dominos.\n")
