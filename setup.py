@@ -7,6 +7,7 @@ except:
 
 setup(
     name="pizzabutton",
+    url="https://github.com/peterskipper/pizzabutton",
     author="Peter Skipper",
     author_email="peter.skipper@gmail.com",
     version="0.0.1",
