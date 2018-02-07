@@ -14,6 +14,4 @@ global-exclude *.sh
 include README.md
 include LICENSE
 include EXAMPLE_PIZZAVARS
-
-# directory includes
-graft pizzabutton/static
+include pizzabutton/static/*
