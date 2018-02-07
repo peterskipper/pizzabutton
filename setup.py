@@ -10,7 +10,7 @@ setup(
     url="https://github.com/peterskipper/pizzabutton",
     author="Peter Skipper",
     author_email="peter.skipper@gmail.com",
-    version="0.0.2",
+    version="0.0.3",
     packages=find_packages(),
     install_requires=[
         "pizzapi==0.0.3",
