@@ -18,7 +18,7 @@ setup(
     ],
     package_data={
         "pizzabutton": ["static/index.js"]
-    }
+    },
     description="A button on Jupyter's toolbar for pizza",
     long_description=long_desc,
 )
