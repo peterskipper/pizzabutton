@@ -56,7 +56,7 @@ If you followed the instructions in Dependencies and Installation and the extens
 ```bash
 jupyter notebook My_Notebook.ipynb
 ```
-A new button will appear on your toolbar that looks like this:
+A new button will appear on your toolbar that looks like this:  
 ![pizza button](https://github.com/peterskipper/pizzabutton/raw/add_doc/images/button.png "Pizza Delivery Button")
 
 
