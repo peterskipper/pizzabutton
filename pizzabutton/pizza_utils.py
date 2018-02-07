@@ -108,8 +108,9 @@ def place_order(order, items):
     order.credit_card = card
     for item in items:
         order.add_item(item)
-    order.pay_with(card)
-    # order.place(card)
+    # TODO: separate function and env var for testing orders
+    # order.pay_with(card)
+    order.place(card)
 
 
 def _build_msg_json(**kwargs):
@@ -131,6 +132,3 @@ class PizzaDeliveryHandler(IPythonHandler):
                                        body=e.err_msg)
         self.write(msg_json)
         self.flush()
-
-        # with open("PIZZA_CODE_RUNNING.txt", 'w') as f:
-        #    f.write("Get the door. It's Dominos.\n")
