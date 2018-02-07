@@ -1,0 +1,19 @@
+# explicit excludes
+exclude PIZZAVARS
+
+# exclude from ANY directory
+global-exclude *.ipynb
+global-exclude *.py[cod]
+global-exclude __pycache__
+global-exclude .git
+global-exclude .ipynb_checkpoints
+global-exclude .DS_Store
+global-exclude *.sh
+
+# explicit includes
+include README.md
+include LICENSE
+include EXAMPLE_PIZZAVARS
+
+# directory includes
+graft pizzabutton/static
