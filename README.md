@@ -57,6 +57,7 @@ If you followed the instructions in Dependencies and Installation and the extens
 jupyter notebook My_Notebook.ipynb
 ```
 A new button will appear on your toolbar that looks like this:
-INSERT BUTTON LINK
+![pizza button](https://github.com/peterskipper/pizzabutton/raw/add_doc/images/button.png "Pizza Delivery Button")
+
 
 Click the button once and a modal will pop up telling you your order is on the way! Keep on coding & eating friend...

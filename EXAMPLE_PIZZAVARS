@@ -1,0 +1,13 @@
+export FIRST_NAME=Jon
+export LAST_NAME=Snow
+export EMAIL=jon.snow@example.com
+export PHONE=9078675309
+export STREET="400 W. Fake Avenue"
+export CITY=NotARealCity
+export REGION=AK
+export DELIVERY_ZIP=12345
+export CC_NUMBER=XXXXXXXXXXXXXXXX
+export EXPIRATION=XXXX
+export CVV=XXX
+export BILLING_ZIP=54321
+export MY_ORDER_ITEMS=XXXXXXXX,XXXXXXXX
