@@ -14,7 +14,9 @@ setup(
     packages=find_packages(),
     install_requires=[
         "pizzapi==0.0.3",
-        "jupyter==1"
+        "jupyter==1",
+        "argparse==1.1",
+        "msgpack==0.5.6"
     ],
     include_package_data=True,
     description="A button on Jupyter's toolbar for pizza",
